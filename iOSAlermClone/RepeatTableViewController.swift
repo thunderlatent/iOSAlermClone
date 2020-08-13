@@ -1,21 +1,23 @@
 //
-//  InDetailTableViewController.swift
+//  RepeatTableViewController.swift
 //  iOSAlermClone
 //
-//  Created by Jimmy on 2020/8/12.
+//  Created by Jimmy on 2020/8/13.
 //  Copyright © 2020 yuming. All rights reserved.
 //
 
 import UIKit
 
-class InDetailTableViewController: UITableViewController {
-    @IBOutlet weak var laterMinderSwitch: UISwitch!
-    @IBOutlet weak var repeatLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var ringLabel: UILabel!
-    
+class RepeatTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        let leftBtn = navigationItem.leftBarButtonItem
+        leftBtn?.title = "返回"
+        navigationItem.setLeftBarButton(leftBtn, animated: true)
+        
+        
+//navigationController?.navigationItem.leftBarButtonItem?.title = "<返回"
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,24 +28,13 @@ class InDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 1
-//    }
+ 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 4
+        return 7
     }
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-          if let vc = mainStoryboard.instantiateViewController(withIdentifier: "repeat") as? RepeatTableViewController
-          {
-              present(vc, animated: false, completion: nil)
-          }
-        print("indexPath.row = \(indexPath.row)")
-    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)

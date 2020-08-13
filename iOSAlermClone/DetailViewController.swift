@@ -98,8 +98,8 @@ class DetailViewController: UIViewController {
     func tapToSaving()
     {
         alarmModel = AlarmModel(times: selectTime, description: inDetailTableViewController.descriptionLabel.text!, isOnState: true, repeatState: inDetailTableViewController.repeatLabel.text, laterMinder: inDetailTableViewController.laterMinderSwitch.isOn, ring: inDetailTableViewController.ringLabel.text)
-        delegate?.addPassingValue(alarmData: alarmModel)
-        delegate?.editPassingValue(alarmData: alarmModel)
+        delegate?.passingValue(alarmData: alarmModel)
+        
     }
     deinit {
         print("被釋放")

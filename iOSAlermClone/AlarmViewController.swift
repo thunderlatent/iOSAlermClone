@@ -9,16 +9,20 @@
 import UIKit
 
 class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,PassingValueDelegate {
-    func editPassingValue(alarmData: AlarmModel) {
-//        alarmModels[indexPath!.row] = alarmData
-//        alarmTableView.reloadRows(at: [indexPath!], with: .automatic)
-    }
+  
     
     
-    func addPassingValue(alarmData: AlarmModel) {
-        
-        alarmModels.append(alarmData)
-        alarmTableView.reloadData()
+    func passingValue(alarmData: AlarmModel)
+    {
+        if tapBtn == "編輯"
+        {
+            alarmModels[indexPath!.row] = alarmData
+            alarmTableView.reloadRows(at: [indexPath!], with: .automatic)
+        }else if tapBtn == "新增"
+        {
+            alarmModels.append(alarmData)
+            alarmTableView.reloadData()
+        }
     }
  
     var alarmModels = [AlarmModel]()
@@ -49,7 +53,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath
         tableView.isEditing.toggle()
-        
+        navigationItem.leftBarButtonItem?.title = "編輯"
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
     @IBAction func editBtn(_ sender: UIBarButtonItem) {

@@ -18,6 +18,7 @@
 		53C8FBEB24E1107300A787AD /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8FBEA24E1107300A787AD /* AlarmTableViewCell.swift */; };
 		53C8FBED24E13F9C00A787AD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8FBEC24E13F9C00A787AD /* DetailViewController.swift */; };
 		53D37F2F24E3D0CE00995608 /* InDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D37F2E24E3D0CE00995608 /* InDetailTableViewController.swift */; };
+		53D37F3124E50F2600995608 /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D37F3024E50F2600995608 /* RepeatTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		53C8FBEA24E1107300A787AD /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		53C8FBEC24E13F9C00A787AD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		53D37F2E24E3D0CE00995608 /* InDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InDetailTableViewController.swift; sourceTree = "<group>"; };
+		53D37F3024E50F2600995608 /* RepeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				53C8FBDE24E0E5D000A787AD /* LaunchScreen.storyboard */,
 				53C8FBE124E0E5D000A787AD /* Info.plist */,
 				5346F31524E27F11003D1D40 /* AlarmModel.swift */,
+				53D37F3024E50F2600995608 /* RepeatTableViewController.swift */,
 			);
 			path = iOSAlermClone;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			files = (
 				53C8FBD824E0E5C800A787AD /* AlarmViewController.swift in Sources */,
 				53C8FBD424E0E5C800A787AD /* AppDelegate.swift in Sources */,
+				53D37F3124E50F2600995608 /* RepeatTableViewController.swift in Sources */,
 				53C8FBED24E13F9C00A787AD /* DetailViewController.swift in Sources */,
 				53C8FBD624E0E5C800A787AD /* SceneDelegate.swift in Sources */,
 				53C8FBEB24E1107300A787AD /* AlarmTableViewCell.swift in Sources */,

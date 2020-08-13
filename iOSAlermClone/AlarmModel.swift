@@ -8,8 +8,8 @@
 				
 import Foundation
 protocol PassingValueDelegate:AnyObject {
-    func addPassingValue(alarmData: AlarmModel)
-    func editPassingValue(alarmData: AlarmModel)
+    func passingValue(alarmData: AlarmModel)
+    
 }
 struct AlarmModel {
     var times = "00:00"
