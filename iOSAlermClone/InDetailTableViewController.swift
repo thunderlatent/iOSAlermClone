@@ -36,12 +36,12 @@ class InDetailTableViewController: UITableViewController {
         return 4
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-          if let vc = mainStoryboard.instantiateViewController(withIdentifier: "repeat") as? RepeatTableViewController
-          {
-              present(vc, animated: false, completion: nil)
-          }
+//
+//        let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//          if let vc = mainStoryboard.instantiateViewController(withIdentifier: "repeat") as? RepeatTableViewController
+//          {
+//              present(vc, animated: false, completion: nil)
+//          }
         print("indexPath.row = \(indexPath.row)")
     }
     /*

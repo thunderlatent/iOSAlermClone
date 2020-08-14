@@ -14,7 +14,6 @@
 		53C8FBDB24E0E5C800A787AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53C8FBD924E0E5C800A787AD /* Main.storyboard */; };
 		53C8FBDD24E0E5D000A787AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53C8FBDC24E0E5D000A787AD /* Assets.xcassets */; };
 		53C8FBE024E0E5D000A787AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53C8FBDE24E0E5D000A787AD /* LaunchScreen.storyboard */; };
-		53C8FBE924E10C2D00A787AD /* Another.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53C8FBE724E10C2D00A787AD /* Another.storyboard */; };
 		53C8FBEB24E1107300A787AD /* AlarmTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8FBEA24E1107300A787AD /* AlarmTableViewCell.swift */; };
 		53C8FBED24E13F9C00A787AD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8FBEC24E13F9C00A787AD /* DetailViewController.swift */; };
 		53D37F2F24E3D0CE00995608 /* InDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D37F2E24E3D0CE00995608 /* InDetailTableViewController.swift */; };
@@ -31,7 +30,6 @@
 		53C8FBDC24E0E5D000A787AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		53C8FBDF24E0E5D000A787AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		53C8FBE124E0E5D000A787AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53C8FBE824E10C2D00A787AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = iOSAlermClone/Base.lproj/Another.storyboard; sourceTree = "<group>"; };
 		53C8FBEA24E1107300A787AD /* AlarmTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTableViewCell.swift; sourceTree = "<group>"; };
 		53C8FBEC24E13F9C00A787AD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		53D37F2E24E3D0CE00995608 /* InDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -52,7 +50,6 @@
 		53C8FBC724E0E5C700A787AD = {
 			isa = PBXGroup;
 			children = (
-				53C8FBE724E10C2D00A787AD /* Another.storyboard */,
 				53C8FBD224E0E5C700A787AD /* iOSAlermClone */,
 				53C8FBD124E0E5C700A787AD /* Products */,
 			);
@@ -145,7 +142,6 @@
 			files = (
 				53C8FBE024E0E5D000A787AD /* LaunchScreen.storyboard in Resources */,
 				53C8FBDD24E0E5D000A787AD /* Assets.xcassets in Resources */,
-				53C8FBE924E10C2D00A787AD /* Another.storyboard in Resources */,
 				53C8FBDB24E0E5C800A787AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,14 +181,6 @@
 				53C8FBDF24E0E5D000A787AD /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		53C8FBE724E10C2D00A787AD /* Another.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				53C8FBE824E10C2D00A787AD /* Base */,
-			);
-			name = Another.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
