@@ -13,7 +13,7 @@ class InDetailTableViewController: UITableViewController {
     @IBOutlet weak var repeatLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var ringLabel: UILabel!
-    
+    var indexPath: Int?
     override func viewDidLoad() {
         super.viewDidLoad()
         

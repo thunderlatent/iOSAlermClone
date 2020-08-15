@@ -33,13 +33,14 @@ class DetailViewController: UIViewController {
         getSelectTime()
         setBarItemTitle()
         
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         print("alarmModel:\(alarmModel)")
     }
     func setBarItemTitle()
     {
-        barTitle.text = (alarmModel == nil) ? "加入鬧鐘" : "編輯鬧鐘"
+        navigationItem.title = (alarmModel == nil) ? "加入鬧鐘" : "編輯鬧鐘"
     }
     func setupTimePicker()
     {
@@ -69,8 +70,10 @@ class DetailViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if let inDetailTBC = segue.destination as? InDetailTableViewController {
             inDetailTableViewController = inDetailTBC
+            
         }
         
         // Get the new view controller using segue.destination.

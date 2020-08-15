@@ -9,15 +9,15 @@
 import UIKit
 
 class RepeatTableViewController: UITableViewController {
-
+    var selectDaysOfWeek: [Int:Bool] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let leftBtn = navigationItem.leftBarButtonItem
-        leftBtn?.title = "返回"
-        navigationItem.setLeftBarButton(leftBtn, animated: true)
         
         
-//navigationController?.navigationItem.leftBarButtonItem?.title = "<返回"
+        
+        
+
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -28,13 +28,27 @@ class RepeatTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
- 
-
+   
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 7
     }
 
+    func selectRows(tableView:UITableView, indexPath: IndexPath)
+    {
+         tableView.deselectRow(at: indexPath, animated: true)
+                selectDaysOfWeek[indexPath.row] = (selectDaysOfWeek[indexPath.row] == nil) ? true : nil
+                
+                let cell = tableView.cellForRow(at: indexPath)
+                
+                cell?.accessoryType = (selectDaysOfWeek[indexPath.row] != nil) ? .checkmark : .none
+        
+                print("count:\(selectDaysOfWeek.count)")
+                print(selectDaysOfWeek)
+    }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -44,7 +58,11 @@ class RepeatTableViewController: UITableViewController {
         return cell
     }
     */
+    //MARK: TableViewDelegate -
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+          selectRows(tableView: tableView, indexPath: indexPath)
 
+       }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
