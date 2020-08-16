@@ -18,6 +18,7 @@ class InDetailTableViewController: UITableViewController {
     var select: [Int:String] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         }
     override func viewDidAppear(_ animated: Bool) {
         displayRepeatState()

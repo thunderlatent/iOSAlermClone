@@ -348,9 +348,10 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="0" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4cO-Vh-1P9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
-                            <tableViewSection id="YGc-8o-j3m">
+                            <tableViewSection headerTitle=" " id="YGc-8o-j3m">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" editingAccessoryType="checkmark" textLabel="AFg-Ti-i7q" rowHeight="43.99999988079071" style="IBUITableViewCellStyleDefault" id="qc7-5F-DT7">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
@@ -550,7 +551,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SecondNVC" automaticallyAdjustsScrollViewInsets="NO" id="cOz-di-jCl" customClass="SecondNVC" customModule="iOSAlermClone" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ej2-mI-JTj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Ej2-mI-JTj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

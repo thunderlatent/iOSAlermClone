@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
         setupTimePicker()
         getSelectTimeToString()
         setBarItemTitle()
-        
+        navigationItem.backBarButtonItem?.tintColor = UIColor.systemOrange
         
     }
     override func viewDidAppear(_ animated: Bool) {
