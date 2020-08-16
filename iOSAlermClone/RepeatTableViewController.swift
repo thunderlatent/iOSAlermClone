@@ -11,31 +11,13 @@ import UIKit
 class RepeatTableViewController: UITableViewController {
     var selectDaysOfWeek: [Int:String] = [:]
     var numberToString = ["日","一","二","三","四","五","六",]
+    var receiveDaysOfWeek: [Int:Bool] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    
-    override func viewWillLayoutSubviews()
-    {
-//        let barButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(self.barButtonAction))
-//        barButton.title = "custom"
-//        self.navigationItem.setLeftBarButton(barButton, animated: false)
-    }
-    @objc func barButtonAction()
-    {
-        self.navigationController?.popToRootViewController(animated: true)
-        print("Button pressed")
+        print("selectDaysOfWeek:\(selectDaysOfWeek)")
         
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.navigationItem.setHidesBackButton(true, animated: true)
-//        
-//    }
+
     // MARK: - Table view data source
     
     
@@ -56,15 +38,10 @@ class RepeatTableViewController: UITableViewController {
         print("count:\(selectDaysOfWeek.count)")
         print(selectDaysOfWeek)
     }
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
-     }
-     */
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.accessoryType = (selectDaysOfWeek[indexPath.row] != nil) ? .checkmark : .none
+    }
+    
     //MARK: TableViewDelegate -
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectRows(tableView: tableView, indexPath: indexPath)

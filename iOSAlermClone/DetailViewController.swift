@@ -129,6 +129,6 @@ class DetailViewController: UIViewController {
     
     deinit {
         print("被釋放")
-        print(alarmModel!)
+        print(alarmModel ?? "NIL")
     }
 }

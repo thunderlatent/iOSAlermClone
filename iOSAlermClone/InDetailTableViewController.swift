@@ -15,42 +15,48 @@ class InDetailTableViewController: UITableViewController {
     @IBOutlet weak var ringLabel: UILabel!
     var repeatTableViewController: RepeatTableViewController?
     var indexPath: Int?
-    var repeatText = ""
+    var select: [Int:String] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(self.barButtonAction))
-      
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
+        }
     override func viewDidAppear(_ animated: Bool) {
+        displayRepeatState()
+    }
+   
+    func displayRepeatState()
+    {
         if let select = repeatTableViewController?.selectDaysOfWeek
         {
-            if select.count == 1
+            self.select = select
+            if select.count == 0
+            {
+                repeatLabel.text = "永不"
+            }else if select.count == 1
             {
                 repeatLabel.text = "星期\(select.first!.value)"
-            }else if select.count > 1
+            }else if select.count > 1 && select.count < 7
             {
-                let keys = select.keys.sorted(by: <)
-                for key in keys
+                if select.count == 2, select[0] == "日", select[6] == "六"
                 {
-                    repeatText += "週" + "\(select[key]!) "
+                    repeatLabel.text = "週末"
+                }else
+                {
+                    let keys = select.keys.sorted(by: <)
+                    var repeatText = ""
+                    for key in keys
+                    {
+                        repeatText += "週" + "\(select[key]!) "
+                    }
+                    repeatLabel.text = repeatText
                 }
-                repeatLabel.text = repeatText
+            }else if select.count == 7
+            {
+                repeatLabel.text = "每天"
             }
             print("select:\(select)")
             
         }
     }
-    @objc func barButtonAction()
-       {
-           self.navigationController?.popToRootViewController(animated: true)
-           print("Button pressed")
-           
-       }
 
     // MARK: - Table view data source
 
@@ -127,6 +133,8 @@ class InDetailTableViewController: UITableViewController {
             if let repeatTBC = segue.destination as? RepeatTableViewController
             {
                 repeatTableViewController = repeatTBC
+                repeatTBC.selectDaysOfWeek = select
+                
             }
         }
         // Get the new view controller using segue.destination.
