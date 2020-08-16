@@ -13,16 +13,44 @@ class InDetailTableViewController: UITableViewController {
     @IBOutlet weak var repeatLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var ringLabel: UILabel!
+    var repeatTableViewController: RepeatTableViewController?
     var indexPath: Int?
+    var repeatText = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "BACK", style: .plain, target: self, action: #selector(self.barButtonAction))
+      
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    override func viewDidAppear(_ animated: Bool) {
+        if let select = repeatTableViewController?.selectDaysOfWeek
+        {
+            if select.count == 1
+            {
+                repeatLabel.text = "星期\(select.first!.value)"
+            }else if select.count > 1
+            {
+                let keys = select.keys.sorted(by: <)
+                for key in keys
+                {
+                    repeatText += "週" + "\(select[key]!) "
+                }
+                repeatLabel.text = repeatText
+            }
+            print("select:\(select)")
+            
+        }
+    }
+    @objc func barButtonAction()
+       {
+           self.navigationController?.popToRootViewController(animated: true)
+           print("Button pressed")
+           
+       }
 
     // MARK: - Table view data source
 
@@ -89,14 +117,21 @@ class InDetailTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRepeatTBC"
+        {
+            if let repeatTBC = segue.destination as? RepeatTableViewController
+            {
+                repeatTableViewController = repeatTBC
+            }
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }
