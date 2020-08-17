@@ -71,25 +71,33 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let secondNVC = segue.destination as! UINavigationController
+        
         if tapBtn == "編輯"
         {
             if segue.identifier == "showDetail"
             {
-                let detailVC = segue.destination as! DetailViewController
+                
+                let detailVC = secondNVC.topViewController as! DetailViewController
                 if let indexPath = indexPath, alarmModels.count > 0
                 {
                     detailVC.alarmModel = alarmModels[indexPath.row]
                     detailVC.delegate = self
-                }
+            }
             }
         }else if tapBtn == "新增"
         {
             if segue.identifier == "showDetail"
             {
-                let detailVC = segue.destination as! DetailViewController
-
+//
+//                    let detailVC = segue.destination as! DetailViewController
+//
+//
+                let detailVC = secondNVC.topViewController as! DetailViewController
                 detailVC.delegate = self
+
             }
+            
         }
     }
     deinit {

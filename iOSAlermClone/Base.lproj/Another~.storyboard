@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kSp-Ev-Tuq">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--鬧鐘-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AlarmViewController" customModule="iOSAlermClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="鬧鐘" id="J8X-GW-96D">
+                        <barButtonItem key="leftBarButtonItem" title="編輯" id="REM-Xf-zAp">
+                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="zf0-5V-L59">
+                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3778.2608695652175" y="108.48214285714285"/>
+        </scene>
+        <!--鬧鐘-->
+        <scene sceneID="Gyf-4j-5Ay">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qVc-Fj-bMM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="鬧鐘" image="alarm" catalog="system" selectedImage="alarm.fill" id="GMZ-41-CLk">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="wyJ-mz-CWb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vvD-J0-EzU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BBb-KB-lc3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2868.115942028986" y="108.48214285714285"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="vGJ-hG-ElE">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="kSp-Ev-Tuq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="0vT-bl-yGb"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="YxH-LE-DEi">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="v5w-0L-TEq" kind="relationship" relationship="viewControllers" id="X1U-j5-g82"/>
+                        <segue destination="qVc-Fj-bMM" kind="relationship" relationship="viewControllers" id="vq0-RO-vXB"/>
+                        <segue destination="vFU-vK-Dlp" kind="relationship" relationship="viewControllers" id="Tea-mP-SFk"/>
+                        <segue destination="chs-F5-nBw" kind="relationship" relationship="viewControllers" id="4cM-PB-bVl"/>
+                        <segue destination="cds-eI-F4d" kind="relationship" relationship="viewControllers" id="HUv-t4-TYH"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wm8-G4-cfT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1957.9710144927537" y="108.48214285714285"/>
+        </scene>
+        <!--就寢時間-->
+        <scene sceneID="9yE-lw-5wH">
+            <objects>
+                <viewController title="就寢時間" id="v5w-0L-TEq" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="K4h-wS-Mka">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="pUw-sI-02T"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="世界時鐘" image="globe" catalog="system" id="YP2-zy-KAE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pxN-In-8px" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2241" y="1085"/>
+        </scene>
+        <!--就寢時間-->
+        <scene sceneID="WXV-fb-8DQ">
+            <objects>
+                <viewController id="vFU-vK-Dlp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DWW-76-Wty">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="jXc-fy-wfD"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="就寢時間" image="bed.double.fill" catalog="system" id="kG1-de-7vJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SFc-mx-wug" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1422" y="1096"/>
+        </scene>
+        <!--計時器-->
+        <scene sceneID="b2o-tQ-voS">
+            <objects>
+                <viewController id="cds-eI-F4d" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XGG-Ej-VQn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="8Yj-ZB-fyK"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="計時器" image="timer" catalog="system" id="0HQ-Ob-Ljn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NIz-d8-Qx5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-341" y="1126"/>
+        </scene>
+        <!--碼錶-->
+        <scene sceneID="WL6-pk-Qma">
+            <objects>
+                <viewController id="chs-F5-nBw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h1v-7C-Pvb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="s4R-Le-Axm"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="碼錶" image="stopwatch.fill" catalog="system" id="N6k-5w-LCg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TRw-xJ-duK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="1100"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="alarm" catalog="system" width="124" height="128"/>
+        <image name="alarm.fill" catalog="system" width="124" height="128"/>
+        <image name="bed.double.fill" catalog="system" width="128" height="80"/>
+        <image name="globe" catalog="system" width="128" height="121"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="stopwatch.fill" catalog="system" width="121" height="128"/>
+        <image name="timer" catalog="system" width="128" height="121"/>
+    </resources>
+</document>

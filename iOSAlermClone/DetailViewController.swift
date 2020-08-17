@@ -30,16 +30,20 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTimePicker()
-        getSelectTime()
+        getSelectTimeToString()
         setBarItemTitle()
+        
         
     }
     override func viewDidAppear(_ animated: Bool) {
+        
         print("alarmModel:\(alarmModel)")
+   
+        setDataToInDetailTableViewcontroller()
     }
     func setBarItemTitle()
     {
-        barTitle.text = (alarmModel == nil) ? "加入鬧鐘" : "編輯鬧鐘"
+        navigationItem.title = (alarmModel == nil) ? "加入鬧鐘" : "編輯鬧鐘"
     }
     func setupTimePicker()
     {
@@ -48,7 +52,7 @@ class DetailViewController: UIViewController {
         print("test")
     }
     
-    func getNowTime() -> String
+    func getNowTimeToString() -> String
     {
         let now = Date()
                 let dateformatter = DateFormatter()
@@ -60,18 +64,27 @@ class DetailViewController: UIViewController {
         return nowTime
     }
     
-    func getSelectTime() 
+    func getSelectTimeToString() 
     {
         timePicker.addTarget(self, action: #selector(self.timePickerAction(_:)), for: .valueChanged)
 //        let getSelectTime = timpicker
     }
-    
+    func getStringToSelectTime() -> Date
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        let date = dateFormatter.date(from: selectTime)
+        print("date:\(date)")
+        return date!
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if let inDetailTBC = segue.destination as? InDetailTableViewController {
             inDetailTableViewController = inDetailTBC
+            
         }
         
         // Get the new view controller using segue.destination.
@@ -85,7 +98,7 @@ class DetailViewController: UIViewController {
     
     @IBAction func saveBtn(_ sender: UIButton) {
         dismiss(animated: true) {
-            print("點選按鈕時的時間：\(self.getSelectTime())")
+            print("點選按鈕時的時間：\(self.getSelectTimeToString())")
             self.tapToSaving()
         }
     }
@@ -102,8 +115,21 @@ class DetailViewController: UIViewController {
         delegate?.passingValue(alarmData: alarmModel)
         
     }
+    func setDataToInDetailTableViewcontroller()
+    {
+        if let alarmModel = alarmModel
+        {
+            timePicker.date = getStringToSelectTime()
+//            timePicker.setDate(getStringToSelectTime(), animated: true)
+            inDetailTableViewController.repeatLabel.text = alarmModel.repeatState
+            inDetailTableViewController.descriptionLabel.text = alarmModel.description
+            inDetailTableViewController.ringLabel.text = "漣漪"
+            inDetailTableViewController.laterMinderSwitch.isOn = alarmModel.isOnState
+        }
+    }
+    
     deinit {
         print("被釋放")
-        print(alarmModel)
+        print(alarmModel!)
     }
 }

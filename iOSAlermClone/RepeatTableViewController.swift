@@ -9,85 +9,113 @@
 import UIKit
 
 class RepeatTableViewController: UITableViewController {
-
+    var selectDaysOfWeek: [Int:String] = [:]
+    var numberToString = ["日","一","二","三","四","五","六",]
     override func viewDidLoad() {
         super.viewDidLoad()
-        let leftBtn = navigationItem.leftBarButtonItem
-        leftBtn?.title = "返回"
-        navigationItem.setLeftBarButton(leftBtn, animated: true)
-        
-        
-//navigationController?.navigationItem.leftBarButtonItem?.title = "<返回"
-        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    override func viewWillLayoutSubviews()
+    {
+//        let barButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(self.barButtonAction))
+//        barButton.title = "custom"
+//        self.navigationItem.setLeftBarButton(barButton, animated: false)
+    }
+    @objc func barButtonAction()
+    {
+        self.navigationController?.popToRootViewController(animated: true)
+        print("Button pressed")
+        
+    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.navigationItem.setHidesBackButton(true, animated: true)
+//        
+//    }
     // MARK: - Table view data source
-
- 
-
+    
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 7
     }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    
+    func selectRows(tableView:UITableView, indexPath: IndexPath)
+    {
+        tableView.deselectRow(at: indexPath, animated: true)
+        selectDaysOfWeek[indexPath.row] = (selectDaysOfWeek[indexPath.row] == nil) ? numberToString[indexPath.row] : nil
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = (selectDaysOfWeek[indexPath.row] != nil) ? .checkmark : .none
+        print("count:\(selectDaysOfWeek.count)")
+        print(selectDaysOfWeek)
     }
-    */
-
     /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+     
+     // Configure the cell...
+     
+     return cell
+     }
+     */
+    //MARK: TableViewDelegate -
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectRows(tableView: tableView, indexPath: indexPath)
+        
     }
-    */
-
     /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+  
+    deinit {
+        print("RepeatTVC is being deinit")
     }
-    */
-
 }
