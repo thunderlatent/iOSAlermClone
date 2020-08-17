@@ -14,13 +14,23 @@ class RepeatTableViewController: UITableViewController {
     var receiveDaysOfWeek: [Int:Bool] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         print("selectDaysOfWeek:\(selectDaysOfWeek)")
         
     }
 
     // MARK: - Table view data source
-    
-    
+    //設置section0的背景顏色
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let blackView:UIView =
+        {
+            let blackView = UIView()
+            blackView.backgroundColor = .black
+            return blackView
+        }()
+        return blackView
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -40,6 +50,8 @@ class RepeatTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.accessoryType = (selectDaysOfWeek[indexPath.row] != nil) ? .checkmark : .none
+        tableView.backgroundColor = .black
+        tableView.tableHeaderView?.backgroundColor = .yellow
     }
     
     //MARK: TableViewDelegate -

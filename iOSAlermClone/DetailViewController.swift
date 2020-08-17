@@ -30,19 +30,19 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTimePicker()
-        
         setBarItemTitle()
+        getSelectTimeToString()
+        setDataToInDetailTableViewcontroller()
         navigationItem.backBarButtonItem?.tintColor = UIColor.systemOrange
         
     }
+   
     override func viewWillAppear(_ animated: Bool) {
-        getSelectTimeToString()
-    }
+            }
     override func viewDidAppear(_ animated: Bool) {
         
         print("alarmModel:\(alarmModel)")
    
-        setDataToInDetailTableViewcontroller()
     }
     func setBarItemTitle()
     {
@@ -129,6 +129,7 @@ class DetailViewController: UIViewController {
             inDetailTableViewController.descriptionLabel.text = alarmModel.description
             inDetailTableViewController.ringLabel.text = "漣漪"
             inDetailTableViewController.laterMinderSwitch.isOn = alarmModel.isOnState
+            print("alarmModel.description:\(alarmModel.description)")
         }
     }
     
