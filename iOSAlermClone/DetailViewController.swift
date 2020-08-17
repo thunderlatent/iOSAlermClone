@@ -45,6 +45,7 @@ class DetailViewController: UIViewController {
     {
         self.timePicker.locale = Locale(identifier: "en_GB")
         self.timePicker.setValue(UIColor.white, forKeyPath: "textColor")
+        print("test")
     }
     
     func getNowTime() -> String
