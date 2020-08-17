@@ -30,10 +30,13 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTimePicker()
-        getSelectTimeToString()
+        
         setBarItemTitle()
         navigationItem.backBarButtonItem?.tintColor = UIColor.systemOrange
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        getSelectTimeToString()
     }
     override func viewDidAppear(_ animated: Bool) {
         
@@ -72,8 +75,9 @@ class DetailViewController: UIViewController {
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
-        let date = dateFormatter.date(from: selectTime)
-        print("date:\(date)")
+        print("selectTime:\(selectTime)")
+        let date = dateFormatter.date(from: alarmModel.times)
+        print("date:\(date!)")
         return date!
     }
     // MARK: - Navigation
@@ -118,8 +122,9 @@ class DetailViewController: UIViewController {
     {
         if let alarmModel = alarmModel
         {
-            timePicker.date = getStringToSelectTime()
-//            timePicker.setDate(getStringToSelectTime(), animated: true)
+//            timePicker.date = getStringToSelectTime()
+            print("getStringToSelectTime:\(getStringToSelectTime())")
+            timePicker.setDate(getStringToSelectTime(), animated: false)
             inDetailTableViewController.repeatLabel.text = alarmModel.repeatState
             inDetailTableViewController.descriptionLabel.text = alarmModel.description
             inDetailTableViewController.ringLabel.text = "漣漪"
