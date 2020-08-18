@@ -11,7 +11,7 @@ import UIKit
 class RepeatTableViewController: UITableViewController {
     var selectDaysOfWeek: [Int:String] = [:]
     var numberToString = ["日","一","二","三","四","五","六",]
-    var receiveDaysOfWeek: [Int:Bool] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -9,24 +9,38 @@
 import UIKit
 
 class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,PassingValueDelegate {
-  
+  lazy var showNoAlarms:UILabel =
+         {
+             let label = UILabel(frame: CGRect(x: view.frame.width / 4, y: view.frame.height / 4, width: view.frame.width / 2, height: view.frame.height / 10))
+             label.text = "無鬧鐘資料"
+             label.textColor = .white
+             label.textAlignment = .center
+             label.font = UIFont(descriptor: UIFontDescriptor(name: "system", size: 30), size: 30)
+             label.backgroundColor = .black
+             return label
+         }()
     
-    
-    func passingValue(alarmData: AlarmModel)
+    var alarmModels = [AlarmModel]()
     {
-        if tapBtn == "編輯"
+        didSet
         {
-            alarmModels[indexPath!.row] = alarmData
-            alarmTableView.reloadRows(at: [indexPath!], with: .automatic)
-        }else if tapBtn == "新增"
-        {
-            alarmModels.append(alarmData)
+            print("alarmModels did changed")
+//            self.listAlarmModels = alarmModels.sorted {$0.times < $1.times}
+            alarmModels.sort { $0.times < $1.times }
+            self.setTableViewEmptyState()
             alarmTableView.reloadData()
+            self.saveData()
         }
     }
- 
-    var alarmModels = [AlarmModel]()
-    
+//    var listAlarmModels = [AlarmModel]()
+//    {
+//        didSet
+//        {
+//            print("listAlarmModel = \(listAlarmModels)")
+//            self.saveData()
+//
+//        }
+//    }
     var indexPath: IndexPath?
     var tapBtn = "編輯"
     
@@ -35,25 +49,25 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         super.viewDidLoad()
         alarmTableView.delegate = self
         alarmTableView.dataSource = self
-        
+        alarmTableView.addSubview(showNoAlarms)
+        loadData()
+        setTableViewEmptyState()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        print("現在有\(alarmModels.count)資料")
-    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         alarmModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AlarmTableViewCell
-        let data = alarmModels[indexPath.row]
-        cell.setup(time: data.times, description: data.description, isOnState: data.isOnState)
+        cell.setUp(listAlarmModel: alarmModels[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath
         tableView.isEditing.toggle()
         navigationItem.leftBarButtonItem?.title = "編輯"
+        
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
     @IBAction func editBtn(_ sender: UIBarButtonItem) {
@@ -64,6 +78,62 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
   
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {}
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let deleteAction = UIContextualAction(style: .destructive, title: "刪除") { (action, sourceView, complete) in
+            self.alarmModels.remove(at: indexPath.row)
+            self.alarmTableView.deleteRows(at: [indexPath], with: .top)
+            complete(true)
+        }
+      
+        let trailingSwipConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return trailingSwipConfiguration
+    }
+
+    
+    func setTableViewEmptyState(){
+        if alarmModels.count == 0
+        {
+            alarmTableView.separatorStyle = .none
+            showNoAlarms.isHidden = false
+        }else
+        {
+            showNoAlarms.isHidden = true
+        }
+    }
+      func loadData()
+      { print(#function)
+            if let loadData = UserDefaults.standard.object(forKey: "listAlarmModel") as? Data
+            {
+                let decoder = JSONDecoder()
+                if let alarmData = try! decoder.decode([AlarmModel]?.self, from: loadData)
+                {
+                    self.alarmModels = alarmData
+                    alarmTableView.reloadData()
+                }
+            }
+        }
+        func saveData()
+        {print(#function)
+            let encoder = JSONEncoder()
+            if let encodeListData = try? encoder.encode(self.alarmModels)
+            {
+                UserDefaults.standard.set(encodeListData, forKey: "listAlarmModel")
+            }
+        }
+    //MARK: PassingValueDelegate-
+    func passingValue(alarmData: AlarmModel)
+       {
+           if tapBtn == "編輯"
+           {
+               alarmModels[indexPath!.row] = alarmData
+               alarmTableView.reloadRows(at: [indexPath!], with: .automatic)
+           }else if tapBtn == "新增"
+           {
+               alarmModels.append(alarmData)
+               alarmTableView.reloadData()
+           }
+       }
     
     @IBAction func addBtn(_ sender: UIBarButtonItem) {
         tapBtn = "新增"
@@ -89,22 +159,11 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         {
             if segue.identifier == "showDetail"
             {
-//
-//                    let detailVC = segue.destination as! DetailViewController
-//
-//
                 let detailVC = secondNVC.topViewController as! DetailViewController
                 detailVC.delegate = self
-
             }
-            
         }
     }
-    deinit {
-        print("deinit")
-    }
-    
-   
 }
 
 

@@ -34,6 +34,12 @@ class AlarmTableViewCell: UITableViewCell {
         self.descriptionLabel.text = description
         self.stateSwitch.isOn = isOnState
     }
+    func setUp(listAlarmModel:AlarmModel)
+    {
+        self.timeLabel.text = listAlarmModel.times
+        self.descriptionLabel.text = listAlarmModel.description
+        self.stateSwitch.isOn = listAlarmModel.isOnState
+    }
 
 }
 

@@ -11,7 +11,7 @@ protocol PassingValueDelegate:AnyObject {
     func passingValue(alarmData: AlarmModel)
     
 }
-struct AlarmModel {
+struct AlarmModel:Codable {
     var times = "00:00"
     var description = "鬧鐘"
     var isOnState = false

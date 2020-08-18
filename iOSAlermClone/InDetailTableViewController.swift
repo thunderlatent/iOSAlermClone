@@ -86,6 +86,7 @@ class InDetailTableViewController: UITableViewController {
             {
                 repeatTableViewController = repeatTBC
                 repeatTBC.selectDaysOfWeek = select
+                print("Select:\(select)")
             }
         }else if segue.identifier == "showLabelVC"
         {
@@ -93,7 +94,6 @@ class InDetailTableViewController: UITableViewController {
             {
                 labelViewController = labelVC
                 labelVC.textTF = tempDescriptionLabel
-                
             }
         }
     }
