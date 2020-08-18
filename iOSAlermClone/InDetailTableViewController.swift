@@ -17,10 +17,12 @@ class InDetailTableViewController: UITableViewController {
     var labelViewController: LabelViewController?
     var indexPath: Int?
     var select: [Int:String] = [:]
-    var tempDescriptionLabel = ""
+//    var tempDescriptionLabel = "鬧鐘Temp"
     override func viewDidLoad() {
         super.viewDidLoad()
-        descriptionLabel.text = "鬧鐘"
+//        print("tempDescriptionLabel = \(tempDescriptionLabel)")
+        
+        
         }
     override func viewDidAppear(_ animated: Bool) {
         displayRepeatState()
@@ -28,7 +30,7 @@ class InDetailTableViewController: UITableViewController {
         {
             print("Line 28 descriptionLabel.text:\(text)")
             descriptionLabel.text = text
-            self.tempDescriptionLabel = descriptionLabel.text!
+//            self.tempDescriptionLabel = descriptionLabel.text!
 
         }
     }
@@ -63,8 +65,6 @@ class InDetailTableViewController: UITableViewController {
             {
                 repeatLabel.text = "每天"
             }
-            print("select:\(select)")
-            
         }
     }
 
@@ -76,7 +76,6 @@ class InDetailTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        print("indexPath.row = \(indexPath.row)")
     }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -93,7 +92,7 @@ class InDetailTableViewController: UITableViewController {
             if let labelVC = segue.destination as? LabelViewController
             {
                 labelViewController = labelVC
-                labelVC.textTF = tempDescriptionLabel
+                labelVC.textTF = descriptionLabel.text!
             }
         }
     }

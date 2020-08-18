@@ -24,23 +24,12 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     {
         didSet
         {
-            print("alarmModels did changed")
-//            self.listAlarmModels = alarmModels.sorted {$0.times < $1.times}
             alarmModels.sort { $0.times < $1.times }
             self.setTableViewEmptyState()
             alarmTableView.reloadData()
             self.saveData()
         }
     }
-//    var listAlarmModels = [AlarmModel]()
-//    {
-//        didSet
-//        {
-//            print("listAlarmModel = \(listAlarmModels)")
-//            self.saveData()
-//
-//        }
-//    }
     var indexPath: IndexPath?
     var tapBtn = "編輯"
     
@@ -82,7 +71,13 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     {
         let deleteAction = UIContextualAction(style: .destructive, title: "刪除") { (action, sourceView, complete) in
             self.alarmModels.remove(at: indexPath.row)
-            self.alarmTableView.deleteRows(at: [indexPath], with: .top)
+            if indexPath.row == 0
+            {
+                self.alarmTableView.reloadData()
+            }else
+            {
+                self.alarmTableView.reloadRows(at: [indexPath], with: .top)
+            }
             complete(true)
         }
       
@@ -102,7 +97,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         }
     }
       func loadData()
-      { print(#function)
+      {
             if let loadData = UserDefaults.standard.object(forKey: "listAlarmModel") as? Data
             {
                 let decoder = JSONDecoder()
@@ -114,7 +109,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             }
         }
         func saveData()
-        {print(#function)
+        {
             let encoder = JSONEncoder()
             if let encodeListData = try? encoder.encode(self.alarmModels)
             {

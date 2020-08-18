@@ -18,6 +18,7 @@ struct AlarmModel:Codable {
     var repeatState: String? = "永不"
     var laterMinder: Bool? = true
     var ring: String? = "漣漪"
+    var selectDays: [Int:String]? = [:]
 }
 extension UITextField {
     func modifyClearButton(){
