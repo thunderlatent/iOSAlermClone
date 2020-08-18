@@ -67,13 +67,13 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         self.indexPath = indexPath
         tableView.isEditing.toggle()
         navigationItem.leftBarButtonItem?.title = "編輯"
-        
+        setEditing(false, animated: true)
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
     @IBAction func editBtn(_ sender: UIBarButtonItem) {
         isEditing.toggle()
         alarmTableView.setEditing(isEditing, animated: true)
-        sender.title = (isEditing) ? "完成" : "編輯"
+        sender.title = (!isEditing) ? "完成" : "編輯"
         tapBtn = "編輯"
     }
   
