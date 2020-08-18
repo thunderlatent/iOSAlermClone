@@ -71,16 +71,10 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     {
         let deleteAction = UIContextualAction(style: .destructive, title: "刪除") { (action, sourceView, complete) in
             self.alarmModels.remove(at: indexPath.row)
-            if indexPath.row == 0
-            {
-                self.alarmTableView.reloadData()
-            }else
-            {
-                self.alarmTableView.reloadRows(at: [indexPath], with: .top)
-            }
             complete(true)
         }
       
+
         let trailingSwipConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
         return trailingSwipConfiguration
     }
