@@ -47,6 +47,8 @@ class DetailViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        print("現在進來的資料alarmModel:")
+        print(alarmModel ?? "alarmModel = NIL")
         if let alarmModel = self.alarmModel
         {
             self.oldAlarmModel = alarmModel
@@ -54,21 +56,27 @@ class DetailViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
                 isSwitchState()
-        delegate?.passingValue(alarmData: alarmModel)
+        if let alarmModel = alarmModel
+        {
+            delegate?.passingValue(alarmData: alarmModel)
+        }
                delegate?.reloadTableView()
     }
     func isSwitchState()
     {
-        if alarmModel == oldAlarmModel
+        if let alarmModel = self.alarmModel
         {
-            switchState = oldAlarmModel.isOnState
-            alarmModel.isOnState = switchState
-            print("Line66 oldAlarmModel.isOnState:\(switchState)")
-        }else
-        {
-            switchState = true
-            alarmModel.isOnState = switchState
-            print("Line68 SwitchState = true")
+            if alarmModel == oldAlarmModel
+            {
+                switchState = oldAlarmModel.isOnState
+                self.alarmModel.isOnState = switchState
+                print("Line66 oldAlarmModel.isOnState:\(switchState)")
+            }else
+            {
+                switchState = true
+                self.alarmModel.isOnState = switchState
+                print("Line68 SwitchState = true")
+            }
         }
     }
   

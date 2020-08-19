@@ -27,7 +27,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
 //            alarmModels.sort { $0.times < $1.times }
             self.setTableViewEmptyState()
 //            alarmTableView.reloadData()
-            print("alarmModels SaveData")
+            
             self.saveData()
         }
     }
@@ -42,11 +42,10 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         alarmTableView.addSubview(showNoAlarms)
         loadData()
         setTableViewEmptyState()
+        print("目前alarmModels內所有資料，共有\(alarmModels.count)筆：\(alarmModels)")
+        
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        saveData()
-        print(#function)
-    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         alarmModels.count
     }
@@ -55,7 +54,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AlarmTableViewCell
         cell.setUp(listAlarmModel: alarmModels[indexPath.row])
         setCellTextColor(cell: cell)
-        
+        cell.stateSwitch.tag = indexPath.row
         cell.stateSwitch.addTarget(self, action: #selector(self.setStateSwitch(sender:)), for: .valueChanged)
         return cell
     }
@@ -77,21 +76,22 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
       
         let indexPath = sender.tag
         alarmModels[indexPath].isOnState = sender.isOn
-        
+        print("Switch indexPath:\(indexPath)")
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath
         tableView.isEditing.toggle()
-        navigationItem.leftBarButtonItem?.title = "編輯"
         setEditing(false, animated: true)
-        print("didSelectRow indexPath:\(indexPath)")
+        navigationItem.leftBarButtonItem?.title = (!isEditing) ? "編輯" : "完成"
+
+    
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
     @IBAction func editBtn(_ sender: UIBarButtonItem) {
         isEditing.toggle()
         alarmTableView.setEditing(isEditing, animated: true)
-        sender.title = (!isEditing) ? "完成" : "編輯"
+        sender.title = (!isEditing) ? "編輯" : "完成"
         tapBtn = "編輯"
     }
   
@@ -154,8 +154,6 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
 //               alarmTableView.reloadData()
            }
         alarmModels.sort { $0.times < $1.times }
-        print(#function)
-
        }
     func reloadTableView()
     {
