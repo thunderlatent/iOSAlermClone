@@ -12,7 +12,7 @@ protocol PassingValueDelegate:AnyObject {
     func reloadTableView()
 }
 struct AlarmModel:Codable {
-    var times = "00:00"
+    var times: String = "00:00"
     var description = "鬧鐘"
     var isOnState = false
     var repeatState: String? = "永不"

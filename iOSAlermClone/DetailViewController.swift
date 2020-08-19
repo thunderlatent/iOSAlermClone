@@ -15,7 +15,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var timePicker: UIDatePicker!
     var alarmModel: AlarmModel!
     var inDetailTableViewController: InDetailTableViewController!
-    lazy var selectTime = nowTime
+    lazy var selectTime:String = self.alarmModel.times
     var nowTime: String
     {
         let now = Date()
@@ -24,6 +24,7 @@ class DetailViewController: UIViewController {
         dateformatter.dateFormat = "HH:mm"
         // 將時間轉換成字串
         let nowTime = dateformatter.string(from: now)
+        print("nowTime:\(nowTime)")
         return nowTime
     }
     override func viewDidLoad() {
@@ -62,6 +63,7 @@ class DetailViewController: UIViewController {
         dateformatter.dateFormat = "HH:mm"
         // 將時間轉換成字串
         let nowTime = dateformatter.string(from: now)
+        print("NowTime:\(nowTime)")
         return nowTime
     }
     
@@ -75,6 +77,8 @@ class DetailViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         let date = dateFormatter.date(from: alarmModel.times)
+        
+        print("date:\(date)")
         return date!
     }
     // MARK: - Navigation
@@ -101,6 +105,7 @@ class DetailViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         self.selectTime = formatter.string(from: sender.date)
+        
         print("sender.date:\(selectTime)")
     }
     
@@ -109,8 +114,6 @@ class DetailViewController: UIViewController {
         alarmModel = AlarmModel(times: selectTime, description: inDetailTableViewController.descriptionLabel.text!, isOnState: true, repeatState: inDetailTableViewController.repeatLabel.text, laterMinder: inDetailTableViewController.laterMinderSwitch.isOn, ring: inDetailTableViewController.ringLabel.text, selectDays: inDetailTableViewController.select)
         delegate?.passingValue(alarmData: alarmModel)
         delegate?.reloadTableView()
-
-        
     }
     func setDataToInDetailTableViewcontroller()
     {

@@ -96,6 +96,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     {
         let deleteAction = UIContextualAction(style: .destructive, title: "刪除") { (action, sourceView, complete) in
             self.alarmModels.remove(at: indexPath.row)
+            self.alarmTableView.deleteRows(at: [indexPath], with: .none)
             complete(true)
         }
       
