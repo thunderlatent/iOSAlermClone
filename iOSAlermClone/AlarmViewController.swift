@@ -24,9 +24,9 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     {
         didSet
         {
-            alarmModels.sort { $0.times < $1.times }
+//            alarmModels.sort { $0.times < $1.times }
             self.setTableViewEmptyState()
-            alarmTableView.reloadData()
+//            alarmTableView.reloadData()
             self.saveData()
         }
     }
@@ -42,7 +42,10 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         loadData()
         setTableViewEmptyState()
     }
-
+    override func viewWillDisappear(_ animated: Bool) {
+        saveData()
+        print(#function)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         alarmModels.count
     }
@@ -50,13 +53,35 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AlarmTableViewCell
         cell.setUp(listAlarmModel: alarmModels[indexPath.row])
+        if cell.stateSwitch.isOn
+        {
+            cell.timeLabel.textColor = .white
+            cell.descriptionLabel.textColor = .white
+        }else
+        {
+            cell.timeLabel.textColor = .lightGray
+            cell.descriptionLabel.textColor = .lightGray
+        }
+        
+        cell.stateSwitch.addTarget(self, action: #selector(self.setStateSwitch(sender:)), for: .valueChanged)
         return cell
+    }
+   
+    
+    @objc func setStateSwitch(sender: UISwitch)
+    {
+      
+        let indexPath = sender.tag
+        alarmModels[indexPath].isOnState = sender.isOn
+        
+        
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath
         tableView.isEditing.toggle()
         navigationItem.leftBarButtonItem?.title = "編輯"
         setEditing(false, animated: true)
+        print("didSelectRow indexPath:\(indexPath)")
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
     @IBAction func editBtn(_ sender: UIBarButtonItem) {
@@ -109,6 +134,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             {
                 UserDefaults.standard.set(encodeListData, forKey: "listAlarmModel")
             }
+            print("儲存成功")
         }
     //MARK: PassingValueDelegate-
     func passingValue(alarmData: AlarmModel)
@@ -116,13 +142,20 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
            if tapBtn == "編輯"
            {
                alarmModels[indexPath!.row] = alarmData
-               alarmTableView.reloadRows(at: [indexPath!], with: .automatic)
+//               alarmTableView.reloadRows(at: [indexPath!], with: .automatic)
            }else if tapBtn == "新增"
            {
                alarmModels.append(alarmData)
-               alarmTableView.reloadData()
+//               alarmTableView.reloadData()
            }
+        alarmModels.sort { $0.times < $1.times }
+        print(#function)
+
        }
+    func reloadTableView()
+    {
+        alarmTableView.reloadData()
+    }
     
     @IBAction func addBtn(_ sender: UIBarButtonItem) {
         tapBtn = "新增"

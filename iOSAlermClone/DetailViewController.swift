@@ -36,7 +36,8 @@ class DetailViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
+        
     }
     override func viewDidAppear(_ animated: Bool) {
         
@@ -93,9 +94,8 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func saveBtn(_ sender: UIButton) {
-        dismiss(animated: true) {
             self.tapToSaving()
-        }
+        dismiss(animated: true, completion: nil)
     }
     @objc func timePickerAction(_ sender: UIDatePicker){
         let formatter = DateFormatter()
@@ -108,6 +108,8 @@ class DetailViewController: UIViewController {
     {
         alarmModel = AlarmModel(times: selectTime, description: inDetailTableViewController.descriptionLabel.text!, isOnState: true, repeatState: inDetailTableViewController.repeatLabel.text, laterMinder: inDetailTableViewController.laterMinderSwitch.isOn, ring: inDetailTableViewController.ringLabel.text, selectDays: inDetailTableViewController.select)
         delegate?.passingValue(alarmData: alarmModel)
+        delegate?.reloadTableView()
+
         
     }
     func setDataToInDetailTableViewcontroller()

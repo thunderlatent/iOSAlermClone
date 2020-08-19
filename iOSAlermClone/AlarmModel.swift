@@ -9,7 +9,7 @@
 import UIKit
 protocol PassingValueDelegate:AnyObject {
     func passingValue(alarmData: AlarmModel)
-    
+    func reloadTableView()
 }
 struct AlarmModel:Codable {
     var times = "00:00"
