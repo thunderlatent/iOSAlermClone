@@ -14,8 +14,16 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var detailContainerView: UIView!
     @IBOutlet weak var timePicker: UIDatePicker!
     var alarmModel: AlarmModel!
+    var oldAlarmModel: AlarmModel = AlarmModel()
     var inDetailTableViewController: InDetailTableViewController!
-    lazy var selectTime:String = self.alarmModel.times
+    var switchState = false
+    lazy var selectTime:String =
+        {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm"
+            self.selectTime = formatter.string(from: self.timePicker.date)
+            return self.selectTime
+    }()
     var nowTime: String
     {
         let now = Date()
@@ -27,6 +35,7 @@ class DetailViewController: UIViewController {
         print("nowTime:\(nowTime)")
         return nowTime
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTimePicker()
@@ -35,16 +44,34 @@ class DetailViewController: UIViewController {
         setDataToInDetailTableViewcontroller()
         navigationItem.backBarButtonItem?.tintColor = UIColor.systemOrange
         
+        
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        if let alarmModel = self.alarmModel
+        {
+            self.oldAlarmModel = alarmModel
+        }
+    }
     override func viewWillDisappear(_ animated: Bool) {
-        
+                isSwitchState()
+        delegate?.passingValue(alarmData: alarmModel)
+               delegate?.reloadTableView()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        
-        print("alarmModel:\(alarmModel)")
-        
+    func isSwitchState()
+    {
+        if alarmModel == oldAlarmModel
+        {
+            switchState = oldAlarmModel.isOnState
+            alarmModel.isOnState = switchState
+            print("Line66 oldAlarmModel.isOnState:\(switchState)")
+        }else
+        {
+            switchState = true
+            alarmModel.isOnState = switchState
+            print("Line68 SwitchState = true")
+        }
     }
+  
     func setBarItemTitle()
     {
         navigationItem.title = (alarmModel == nil) ? "加入鬧鐘" : "編輯鬧鐘"
@@ -111,9 +138,9 @@ class DetailViewController: UIViewController {
     
     func tapToSaving()
     {
-        alarmModel = AlarmModel(times: selectTime, description: inDetailTableViewController.descriptionLabel.text!, isOnState: true, repeatState: inDetailTableViewController.repeatLabel.text, laterMinder: inDetailTableViewController.laterMinderSwitch.isOn, ring: inDetailTableViewController.ringLabel.text, selectDays: inDetailTableViewController.select)
-        delegate?.passingValue(alarmData: alarmModel)
-        delegate?.reloadTableView()
+        
+        alarmModel = AlarmModel(times: selectTime, description: inDetailTableViewController.descriptionLabel.text!, isOnState: switchState, repeatState: inDetailTableViewController.repeatLabel.text, laterMinder: inDetailTableViewController.laterMinderSwitch.isOn, ring: inDetailTableViewController.ringLabel.text, selectDays: inDetailTableViewController.select)
+       
     }
     func setDataToInDetailTableViewcontroller()
     {
@@ -121,7 +148,6 @@ class DetailViewController: UIViewController {
         {
             timePicker.setDate(getStringToSelectTime(), animated: false)
             inDetailTableViewController.repeatLabel.text = alarmModel.repeatState
-//            inDetailTableViewController.tempDescriptionLabel = alarmModel.description
             inDetailTableViewController.descriptionLabel.text = alarmModel.description
             inDetailTableViewController.ringLabel.text = "漣漪"
             inDetailTableViewController.laterMinderSwitch.isOn = alarmModel.isOnState

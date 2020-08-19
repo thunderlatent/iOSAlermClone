@@ -11,7 +11,7 @@ protocol PassingValueDelegate:AnyObject {
     func passingValue(alarmData: AlarmModel)
     func reloadTableView()
 }
-struct AlarmModel:Codable {
+struct AlarmModel:Codable,Equatable {
     var times: String = "00:00"
     var description = "鬧鐘"
     var isOnState = false

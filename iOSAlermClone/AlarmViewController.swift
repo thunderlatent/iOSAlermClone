@@ -27,6 +27,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
 //            alarmModels.sort { $0.times < $1.times }
             self.setTableViewEmptyState()
 //            alarmTableView.reloadData()
+            print("alarmModels SaveData")
             self.saveData()
         }
     }
@@ -53,6 +54,13 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! AlarmTableViewCell
         cell.setUp(listAlarmModel: alarmModels[indexPath.row])
+        setCellTextColor(cell: cell)
+        
+        cell.stateSwitch.addTarget(self, action: #selector(self.setStateSwitch(sender:)), for: .valueChanged)
+        return cell
+    }
+    func setCellTextColor(cell:AlarmTableViewCell)
+    {
         if cell.stateSwitch.isOn
         {
             cell.timeLabel.textColor = .white
@@ -62,11 +70,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             cell.timeLabel.textColor = .lightGray
             cell.descriptionLabel.textColor = .lightGray
         }
-        
-        cell.stateSwitch.addTarget(self, action: #selector(self.setStateSwitch(sender:)), for: .valueChanged)
-        return cell
     }
-   
     
     @objc func setStateSwitch(sender: UISwitch)
     {
