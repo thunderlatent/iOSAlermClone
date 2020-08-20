@@ -81,8 +81,9 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath
-        tableView.isEditing.toggle()
         setEditing(false, animated: true)
+        tableView.isEditing.toggle()
+
         navigationItem.leftBarButtonItem?.title = (!isEditing) ? "編輯" : "完成"
 
     
