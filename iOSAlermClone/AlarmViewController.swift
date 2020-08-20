@@ -42,6 +42,8 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         alarmTableView.addSubview(showNoAlarms)
         loadData()
         setTableViewEmptyState()
+//        alarmTableView.tableFooterView = UIView()
+        
         print("目前alarmModels內所有資料，共有\(alarmModels.count)筆：\(alarmModels)")
         
     }
@@ -56,8 +58,17 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         setCellTextColor(cell: cell)
         cell.stateSwitch.tag = indexPath.row
         cell.stateSwitch.addTarget(self, action: #selector(self.setStateSwitch(sender:)), for: .valueChanged)
+        daysText(cell: cell, indexPath: indexPath)
+        
+        
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20 )
+        tableView.tableFooterView = UIView()
         return cell
     }
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        self.view = nil
+    }
+    
     func setCellTextColor(cell:AlarmTableViewCell)
     {
         if cell.stateSwitch.isOn
@@ -71,6 +82,38 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         }
     }
     
+    func daysText(cell:AlarmTableViewCell, indexPath: IndexPath)
+     {
+        let selectDays = alarmModels[indexPath.row].selectDays!
+        let count = selectDays.count
+        switch count {
+        case 0:
+            cell.descriptionLabel.text = alarmModels[indexPath.row].description
+        case 1:
+            cell.descriptionLabel.text = " \(alarmModels[indexPath.row].description)，每週\(selectDays.first!.value)"
+        case 2:
+            if selectDays[6] == "六", selectDays[0] == "日"
+            {
+                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，每個週末"
+            }else
+            {
+                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
+            }
+        case 5:
+            if selectDays[6] != "六", selectDays[0] != "日"
+            {
+                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，每個平日"
+            }else
+            {
+                 cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
+            }
+            
+        default:
+            cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
+        }
+        
+     }
+    
     @objc func setStateSwitch(sender: UISwitch)
     {
       
@@ -79,6 +122,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         print("Switch indexPath:\(indexPath)")
         
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath
         setEditing(false, animated: true)
@@ -96,7 +140,9 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         tapBtn = "編輯"
     }
   
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {}
+    func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
+        print(#function)
+    }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let deleteAction = UIContextualAction(style: .destructive, title: "刪除") { (action, sourceView, complete) in
@@ -148,11 +194,11 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
            if tapBtn == "編輯"
            {
                alarmModels[indexPath!.row] = alarmData
-//               alarmTableView.reloadRows(at: [indexPath!], with: .automatic)
+
            }else if tapBtn == "新增"
            {
                alarmModels.append(alarmData)
-//               alarmTableView.reloadData()
+
            }
         alarmModels.sort { $0.times < $1.times }
        }
@@ -168,12 +214,10 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let secondNVC = segue.destination as! UINavigationController
-        
         if tapBtn == "編輯"
         {
             if segue.identifier == "showDetail"
             {
-                
                 let detailVC = secondNVC.topViewController as! DetailViewController
                 if let indexPath = indexPath, alarmModels.count > 0
                 {

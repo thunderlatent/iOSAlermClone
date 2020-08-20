@@ -51,7 +51,13 @@ class RepeatTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.accessoryType = (selectDaysOfWeek[indexPath.row] != nil) ? .checkmark : .none
         tableView.backgroundColor = .black
-        tableView.tableHeaderView?.backgroundColor = .yellow
+        let selectBackGroundView: UIView = {
+            let selectView = UIView()
+            selectView.backgroundColor = UIColor(red: 80, green: 80, blue: 80)
+            
+            return selectView
+        }()
+        cell.selectedBackgroundView = selectBackGroundView
     }
     
     //MARK: TableViewDelegate -

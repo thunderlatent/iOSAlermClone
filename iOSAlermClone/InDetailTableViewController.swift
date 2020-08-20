@@ -75,11 +75,14 @@ class InDetailTableViewController: UITableViewController {
         cell.editingAccessoryView?.tintColor = .blue
         cell.editingAccessoryView?.backgroundColor = .red
         cell.backgroundView?.backgroundColor = .green
-        
         let checkMark = UIImageView(image: UIImage(systemName: "chevron.right"))
-        
         cell.accessoryView = checkMark
-        
+        let selectBackGroundView: UIView = {
+            let selectView = UIView()
+            selectView.backgroundColor = UIColor(red: 60, green: 60, blue: 60)
+            return selectView
+        }()
+        cell.selectedBackgroundView = selectBackGroundView
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4

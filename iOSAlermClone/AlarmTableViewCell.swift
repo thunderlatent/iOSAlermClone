@@ -10,15 +10,20 @@ import UIKit
 
 class AlarmTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
-    let selectBackGroundView = UIView()
+    let selectBackGroundView: UIView = {
+        let selectView = UIView()
+        selectView.backgroundColor = UIColor(red: 25, green: 25, blue: 25)
+        return selectView
+    }()
     var stateSwitch = UISwitch()
-    
+//    let selectColror = UIColor(red: 25, green: 25, blue: 25)
     
     @IBOutlet weak var descriptionLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         self.accessoryView = stateSwitch
-        selectBackGroundView.backgroundColor = UIColor(red: 25, green: 25, blue: 25)
+        
+//        selectBackGroundView.backgroundColor = selectColror
         stateSwitch.addTarget(self, action: #selector(self.setColor), for: .valueChanged)
         self.selectedBackgroundView = selectBackGroundView
         // Initialization code
@@ -36,9 +41,10 @@ class AlarmTableViewCell: UITableViewCell {
     func setUp(listAlarmModel:AlarmModel)
     {
         self.timeLabel.text = listAlarmModel.times
-        self.descriptionLabel.text = listAlarmModel.description
+        self.descriptionLabel.text = "\(listAlarmModel.description),\(listAlarmModel.repeatState ?? "")"
         self.stateSwitch.isOn = listAlarmModel.isOnState
-        
+        let checkMark = UIImageView(image: UIImage(systemName: "chevron.right"))
+        self.editingAccessoryView = checkMark
     }
     @objc func setColor()
     {
