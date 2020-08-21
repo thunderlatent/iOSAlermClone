@@ -143,6 +143,9 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, willBeginEditingRowAt indexPath: IndexPath) {
         print(#function)
     }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        <#code#>
+    }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let deleteAction = UIContextualAction(style: .destructive, title: "刪除") { (action, sourceView, complete) in
@@ -201,6 +204,8 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
 
            }
         alarmModels.sort { $0.times < $1.times }
+        navigationItem.leftBarButtonItem?.title = "編輯"
+        alarmTableView.isEditing = false
        }
     func reloadTableView()
     {

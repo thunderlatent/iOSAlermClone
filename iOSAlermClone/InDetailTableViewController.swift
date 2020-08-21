@@ -66,15 +66,13 @@ class InDetailTableViewController: UITableViewController {
                 repeatLabel.text = "每天"
             }
         }
+        
+        
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.accessoryView?.backgroundColor = .yellow
-        cell.editingAccessoryView?.tintColor = .blue
-        cell.editingAccessoryView?.backgroundColor = .red
-        cell.backgroundView?.backgroundColor = .green
         let checkMark = UIImageView(image: UIImage(systemName: "chevron.right"))
         cell.accessoryView = checkMark
         let selectBackGroundView: UIView = {
