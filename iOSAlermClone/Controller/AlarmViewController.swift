@@ -24,10 +24,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     {
         didSet
         {
-//            alarmModels.sort { $0.times < $1.times }
             self.setTableViewEmptyState()
-//            alarmTableView.reloadData()
-            
             self.saveData()
         }
     }
@@ -42,12 +39,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         alarmTableView.addSubview(showNoAlarms)
         loadData()
         setTableViewEmptyState()
-//        alarmTableView.tableFooterView = UIView()
-        
-        print("目前alarmModels內所有資料，共有\(alarmModels.count)筆：\(alarmModels)")
-        
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         alarmModels.count
     }
@@ -58,9 +50,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         setCellTextColor(cell: cell)
         cell.stateSwitch.tag = indexPath.row
         cell.stateSwitch.addTarget(self, action: #selector(self.setStateSwitch(sender:)), for: .valueChanged)
-showText(cell: cell, indexPath: indexPath)
-        
-        
+        showText(cell: cell, indexPath: indexPath)
         cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20 )
         tableView.tableFooterView = UIView()
         return cell
@@ -98,58 +88,24 @@ showText(cell: cell, indexPath: indexPath)
             cell.descriptionLabel.text = " \(alarmModels[indexPath.row].description)， \(alarmModels[indexPath.row].repeatState!)"
         }
     }
-//    func daysText(cell:AlarmTableViewCell, indexPath: IndexPath)
-//     {
-//        let selectDays = alarmModels[indexPath.row].selectDays!
-//        let count = selectDays.count
-//        switch count {
-//        case 0:
-//            cell.descriptionLabel.text = alarmModels[indexPath.row].description
-//        case 1:
-//            cell.descriptionLabel.text = " \(alarmModels[indexPath.row].description)，每週\(selectDays.first!.value)"
-//        case 2:
-//            if selectDays[6] == "六", selectDays[0] == "日"
-//            {
-//                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，每個週末"
-//            }else
-//            {
-//                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
-//            }
-//        case 5:
-//            if selectDays[6] != "六", selectDays[0] != "日"
-//            {
-//                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，每個平日"
-//            }else
-//            {
-//                 cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
-//            }
-//
-//        default:
-//            cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
-//        }
-//
-//     }
     
     @objc func setStateSwitch(sender: UISwitch)
     {
-      
         let indexPath = sender.tag
         alarmModels[indexPath].isOnState = sender.isOn
         print("Switch indexPath:\(indexPath)")
-        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.indexPath = indexPath
         setEditing(false, animated: true)
         tableView.isEditing.toggle()
-
         navigationItem.leftBarButtonItem?.title = (!isEditing) ? "編輯" : "完成"
-
-    
         performSegue(withIdentifier: "showDetail", sender: nil)
     }
-    @IBAction func editBtn(_ sender: UIBarButtonItem) {
+    
+    @IBAction func editBtn(_ sender: UIBarButtonItem)
+    {
         isEditing.toggle()
         alarmTableView.setEditing(isEditing, animated: true)
         sender.title = (!isEditing) ? "編輯" : "完成"
@@ -169,8 +125,7 @@ showText(cell: cell, indexPath: indexPath)
             self.alarmTableView.deleteRows(at: [indexPath], with: .none)
             complete(true)
         }
-      
-
+        
         let trailingSwipConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
         return trailingSwipConfiguration
     }
