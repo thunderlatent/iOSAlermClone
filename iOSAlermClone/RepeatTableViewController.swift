@@ -11,13 +11,12 @@ import UIKit
 class RepeatTableViewController: UITableViewController {
     var selectDaysOfWeek: [Int:String] = [:]
     var numberToString = ["日","一","二","三","四","五","六",]
-    
+    var allDays = Set(Days.allCases)
+    var select: Set<Days> = []
+    var showRepeatText = "永不"
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        print("selectDaysOfWeek:\(selectDaysOfWeek)")
-        
+        showText()
     }
 
     // MARK: - Table view data source
@@ -36,20 +35,12 @@ class RepeatTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 7
+        return allDays.count
     }
     
-    func selectRows(tableView:UITableView, indexPath: IndexPath)
-    {
-        tableView.deselectRow(at: indexPath, animated: true)
-        selectDaysOfWeek[indexPath.row] = (selectDaysOfWeek[indexPath.row] == nil) ? numberToString[indexPath.row] : nil
-        let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = (selectDaysOfWeek[indexPath.row] != nil) ? .checkmark : .none
-        print("SelectDaysOfWeek Count:\(selectDaysOfWeek.count)")
-        print(selectDaysOfWeek)
-    }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.accessoryType = (selectDaysOfWeek[indexPath.row] != nil) ? .checkmark : .none
+        cell.accessoryType = (select.contains(Days(rawValue: indexPath.row)!)) ? .checkmark : .none
         tableView.backgroundColor = .black
         let selectBackGroundView: UIView = {
             let selectView = UIView()
@@ -65,15 +56,48 @@ class RepeatTableViewController: UITableViewController {
         selectRows(tableView: tableView, indexPath: indexPath)
         
     }
+    func selectRows(tableView:UITableView, indexPath: IndexPath)
+    {
+        tableView.deselectRow(at: indexPath, animated: true)
+//        selectDaysOfWeek[indexPath.row] = (selectDaysOfWeek[indexPath.row] == nil) ? numberToString[indexPath.row] : nil
+//        cell?.accessoryType = (selectDaysOfWeek[indexPath.row] != nil) ? .checkmark : .none
+        
+        
+        let cell = tableView.cellForRow(at: indexPath)
+
+        if select.contains(Days(rawValue: indexPath.row)!)
+        {
+            select.remove(Days(rawValue: indexPath.row)!)
+        }else
+        {
+            select.insert(Days(rawValue: indexPath.row)!)
+        }
+        
+        cell?.accessoryType = (select.contains(Days(rawValue: indexPath.row)!)) ? .checkmark : .none
+        showText()
+    }
+    
+    func showText()
+    {
+        switch select {
+        case [.sunday,.saturday]:
+            self.showRepeatText = "週末"
+        case [.monday,.tuesday,.wednesday,.thursday,.friday]:
+            self.showRepeatText = "平日"
+        case []:
+            self.showRepeatText = "永不"
+        case Set(Days.allCases):
+            self.showRepeatText = "每天"
+        default:
+            let text = select.sorted(by: { (raw1, raw2) -> Bool in
+                return raw1.rawValue < raw2.rawValue
+            }).map { (day) -> String in
+                "週\(day.dayString) "
+            }.joined(separator: " ")
+            
+            showRepeatText = text
+        }
+        print(showRepeatText)
+    }
    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
- 
 }

@@ -58,7 +58,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         setCellTextColor(cell: cell)
         cell.stateSwitch.tag = indexPath.row
         cell.stateSwitch.addTarget(self, action: #selector(self.setStateSwitch(sender:)), for: .valueChanged)
-        daysText(cell: cell, indexPath: indexPath)
+showText(cell: cell, indexPath: indexPath)
         
         
         cell.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20 )
@@ -82,37 +82,53 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         }
     }
     
-    func daysText(cell:AlarmTableViewCell, indexPath: IndexPath)
-     {
-        let selectDays = alarmModels[indexPath.row].selectDays!
-        let count = selectDays.count
-        switch count {
-        case 0:
+    func showText(cell:AlarmTableViewCell, indexPath: IndexPath)
+    {
+        switch alarmModels[indexPath.row].selectDays
+        {
+        case [.sunday,.saturday]:
+            cell.descriptionLabel.text = " \(alarmModels[indexPath.row].description)，每個週末"
+        case [.monday,.tuesday,.wednesday,.thursday,.friday]:
+            cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，每個平日"
+        case []:
             cell.descriptionLabel.text = alarmModels[indexPath.row].description
-        case 1:
-            cell.descriptionLabel.text = " \(alarmModels[indexPath.row].description)，每週\(selectDays.first!.value)"
-        case 2:
-            if selectDays[6] == "六", selectDays[0] == "日"
-            {
-                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，每個週末"
-            }else
-            {
-                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
-            }
-        case 5:
-            if selectDays[6] != "六", selectDays[0] != "日"
-            {
-                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，每個平日"
-            }else
-            {
-                 cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
-            }
-            
+        case Set(Days.allCases):
+            cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，每天"
         default:
-            cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
+            cell.descriptionLabel.text = " \(alarmModels[indexPath.row].description)， \(alarmModels[indexPath.row].repeatState!)"
         }
-        
-     }
+    }
+//    func daysText(cell:AlarmTableViewCell, indexPath: IndexPath)
+//     {
+//        let selectDays = alarmModels[indexPath.row].selectDays!
+//        let count = selectDays.count
+//        switch count {
+//        case 0:
+//            cell.descriptionLabel.text = alarmModels[indexPath.row].description
+//        case 1:
+//            cell.descriptionLabel.text = " \(alarmModels[indexPath.row].description)，每週\(selectDays.first!.value)"
+//        case 2:
+//            if selectDays[6] == "六", selectDays[0] == "日"
+//            {
+//                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，每個週末"
+//            }else
+//            {
+//                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
+//            }
+//        case 5:
+//            if selectDays[6] != "六", selectDays[0] != "日"
+//            {
+//                cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，每個平日"
+//            }else
+//            {
+//                 cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
+//            }
+//
+//        default:
+//            cell.descriptionLabel.text = "\(alarmModels[indexPath.row].description)，\(alarmModels[indexPath.row].repeatState!)"
+//        }
+//
+//     }
     
     @objc func setStateSwitch(sender: UISwitch)
     {
@@ -144,7 +160,7 @@ class AlarmViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         print(#function)
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        <#code#>
+        true
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {

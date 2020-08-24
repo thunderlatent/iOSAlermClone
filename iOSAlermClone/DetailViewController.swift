@@ -147,7 +147,13 @@ class DetailViewController: UIViewController {
     func tapToSaving()
     {
         
-        alarmModel = AlarmModel(times: selectTime, description: inDetailTableViewController.descriptionLabel.text!, isOnState: switchState, repeatState: inDetailTableViewController.repeatLabel.text, laterMinder: inDetailTableViewController.laterMinderSwitch.isOn, ring: inDetailTableViewController.ringLabel.text, selectDays: inDetailTableViewController.select)
+        alarmModel = AlarmModel(times: selectTime,
+                                description: inDetailTableViewController.descriptionLabel.text!,
+                                isOnState: switchState,
+                                repeatState: inDetailTableViewController.repeatLabel.text,
+                                laterMinder: inDetailTableViewController.laterMinderSwitch.isOn,
+                                ring: inDetailTableViewController.ringLabel.text,
+                                selectDays: inDetailTableViewController.select)
        
     }
     func setDataToInDetailTableViewcontroller()
@@ -159,7 +165,7 @@ class DetailViewController: UIViewController {
             inDetailTableViewController.descriptionLabel.text = alarmModel.description
             inDetailTableViewController.ringLabel.text = "漣漪"
             inDetailTableViewController.laterMinderSwitch.isOn = alarmModel.isOnState
-            inDetailTableViewController.select = alarmModel.selectDays ?? [:]
+            inDetailTableViewController.select = alarmModel.selectDays ?? []
         }
     }
     

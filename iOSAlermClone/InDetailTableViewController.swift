@@ -16,7 +16,7 @@ class InDetailTableViewController: UITableViewController {
     var repeatTableViewController: RepeatTableViewController?
     var labelViewController: LabelViewController?
     var indexPath: Int?
-    var select: [Int:String] = [:]
+    var select: Set<Days> = []
 //    var tempDescriptionLabel = "鬧鐘Temp"
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,36 +37,47 @@ class InDetailTableViewController: UITableViewController {
    
     func displayRepeatState()
     {
-        if let select = repeatTableViewController?.selectDaysOfWeek
+        if let repeatText = repeatTableViewController?.showRepeatText
+        {
+            repeatLabel.text = repeatText
+        }else
+        {
+//            repeatLabel.text = "永不"
+//            print("Line 46 = 永不")
+        }
+        if let select = repeatTableViewController?.select
         {
             self.select = select
-            if select.count == 0
-            {
-                repeatLabel.text = "永不"
-            }else if select.count == 1
-            {
-                repeatLabel.text = "星期\(select.first!.value)"
-            }else if select.count > 1 && select.count < 7
-            {
-                if select.count == 2, select[0] == "日", select[6] == "六"
-                {
-                    repeatLabel.text = "週末"
-                }else
-                {
-                    let keys = select.keys.sorted(by: <)
-                    var repeatText = ""
-                    for key in keys
-                    {
-                        repeatText += "週" + "\(select[key]!) "
-                    }
-                    repeatLabel.text = repeatText
-                }
-            }else if select.count == 7
-            {
-                repeatLabel.text = "每天"
-            }
         }
-        
+//        {
+//            self.select = select
+//            if select.count == 0
+//            {
+//                repeatLabel.text = "永不"
+//            }else if select.count == 1
+//            {
+//                repeatLabel.text = "星期\(select.first!.value)"
+//            }else if select.count > 1 && select.count < 7
+//            {
+//                if select.count == 2, select[0] == "日", select[6] == "六"
+//                {
+//                    repeatLabel.text = "週末"
+//                }else
+//                {
+//                    let keys = select.keys.sorted(by: <)
+//                    var repeatText = ""
+//                    for key in keys
+//                    {
+//                        repeatText += "週" + "\(select[key]!) "
+//                    }
+//                    repeatLabel.text = repeatText
+//                }
+//            }else if select.count == 7
+//            {
+//                repeatLabel.text = "每天"
+//            }
+//        }
+//
         
     }
 
@@ -95,8 +106,8 @@ class InDetailTableViewController: UITableViewController {
             if let repeatTBC = segue.destination as? RepeatTableViewController
             {
                 repeatTableViewController = repeatTBC
-                repeatTBC.selectDaysOfWeek = select
-                print("Select:\(select)")
+                repeatTBC.select = self.select
+//                print("Select:\(select)")
             }
         }else if segue.identifier == "showLabelVC"
         {

@@ -18,7 +18,7 @@ struct AlarmModel:Codable,Equatable {
     var repeatState: String? = "永不"
     var laterMinder: Bool? = true
     var ring: String? = "漣漪"
-    var selectDays: [Int:String]? = [:]
+    var selectDays: Set<Days>? = []
 }
 extension UITextField {
     func modifyClearButton(){
@@ -48,4 +48,28 @@ extension UIColor
         self.init(red: red, green: green, blue: blue, alpha: 1.0)
     }
     
+}
+
+enum Days: Int, CaseIterable,Codable
+{
+    case sunday = 0,monday,tuesday,wednesday,thursday,friday,saturday
+    var dayString: String
+    {
+        switch self {
+        case .sunday:
+            return "日"
+        case .monday:
+            return "一"
+        case .tuesday:
+            return "二"
+        case .wednesday:
+            return "三"
+        case .thursday:
+            return "四"
+        case .friday:
+            return "五"
+        case .saturday:
+            return "六"
+        }
+    }
 }
