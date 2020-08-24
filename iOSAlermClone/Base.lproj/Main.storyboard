@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qVc-Fj-bMM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e8t-3n-rxG">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="white" dataMode="prototypes" style="plain" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PqO-S7-a88">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <prototypes>
@@ -289,13 +289,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cks-ce-hIQ">
-                                                    <rect key="frame" x="325" y="5" width="51" height="34"/>
+                                                    <rect key="frame" x="365" y="5" width="51" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="cks-ce-hIQ" secondAttribute="height" multiplier="49:34" id="K8d-Eb-OaR"/>
                                                     </constraints>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="稍後提醒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4S-Mj-Vx2">
-                                                    <rect key="frame" x="20" y="12" width="297" height="20.5"/>
+                                                    <rect key="frame" x="20.5" y="12" width="336.5" height="20.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20.5" id="iVu-p9-ylh"/>
                                                     </constraints>
@@ -305,10 +305,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="B4S-Mj-Vx2" firstAttribute="leading" secondItem="Vli-RM-hFl" secondAttribute="leading" constant="20" id="Noe-bM-5kT"/>
+                                                <constraint firstItem="B4S-Mj-Vx2" firstAttribute="leading" secondItem="Vli-RM-hFl" secondAttribute="centerX" multiplier="0.1" id="Noe-bM-5kT"/>
                                                 <constraint firstItem="cks-ce-hIQ" firstAttribute="top" secondItem="Vli-RM-hFl" secondAttribute="top" constant="5" id="TVW-cw-dpb"/>
                                                 <constraint firstAttribute="bottom" secondItem="cks-ce-hIQ" secondAttribute="bottom" constant="5" id="bst-qr-DaE"/>
-                                                <constraint firstAttribute="trailing" secondItem="cks-ce-hIQ" secondAttribute="trailing" constant="40" id="jbC-XH-VJD"/>
+                                                <constraint firstAttribute="trailing" secondItem="cks-ce-hIQ" secondAttribute="trailing" id="jbC-XH-VJD"/>
                                                 <constraint firstItem="B4S-Mj-Vx2" firstAttribute="top" secondItem="Vli-RM-hFl" secondAttribute="top" constant="12" id="nri-7z-N5C"/>
                                                 <constraint firstItem="cks-ce-hIQ" firstAttribute="leading" secondItem="B4S-Mj-Vx2" secondAttribute="trailing" constant="8" symbolic="YES" id="zyy-48-DVL"/>
                                             </constraints>
@@ -551,7 +551,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" autoresizesSubviews="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" largeTitles="YES" id="wyJ-mz-CWb">
-                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="104.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -563,6 +563,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBb-KB-lc3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2841" y="113"/>
+        </scene>
+        <!--計時器-->
+        <scene sceneID="7k9-FE-FWD">
+            <objects>
+                <viewController id="S79-Dw-D5v" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="T9H-7i-fOe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cXv-HX-SIW"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="計時器" image="timer" catalog="system" id="1yi-hX-gmT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K00-CG-Q0u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2622" y="860"/>
+        </scene>
+        <!--世界時鐘-->
+        <scene sceneID="Jbe-O5-knx">
+            <objects>
+                <viewController id="GKg-7L-phn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vzP-fC-x8p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Emx-Ar-0Np"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="世界時鐘" image="globe" catalog="system" id="8IG-2L-p4H"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="49t-id-6iD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="439" y="861"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="fYc-mo-SLD">
+            <objects>
+                <tabBarController id="e8t-3n-rxG" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="ZoE-6t-dti">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="GKg-7L-phn" kind="relationship" relationship="viewControllers" id="bzF-8N-yP6"/>
+                        <segue destination="qVc-Fj-bMM" kind="relationship" relationship="viewControllers" id="Th0-YU-fyL"/>
+                        <segue destination="xqH-7a-spW" kind="relationship" relationship="viewControllers" id="1b4-DZ-pgJ"/>
+                        <segue destination="jJD-X3-CEL" kind="relationship" relationship="viewControllers" id="snU-Q5-E9C"/>
+                        <segue destination="S79-Dw-D5v" kind="relationship" relationship="viewControllers" id="eO3-Fs-sUF"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BTI-Pb-ZtA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1859" y="97"/>
         </scene>
         <!--SecondNVC-->
         <scene sceneID="Lhf-lW-SM1">
@@ -587,10 +641,46 @@
             </objects>
             <point key="canvasLocation" x="4411.594202898551" y="112.5"/>
         </scene>
+        <!--碼錶-->
+        <scene sceneID="5bl-Dv-G1w">
+            <objects>
+                <viewController id="jJD-X3-CEL" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JeJ-IS-eH3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="4D7-Vi-5zh"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="碼錶" image="stopwatch.fill" catalog="system" id="YVD-gq-M0k"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U7k-s0-wVi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1891" y="871"/>
+        </scene>
+        <!--就寢時間-->
+        <scene sceneID="L0H-LJ-fMh">
+            <objects>
+                <viewController id="xqH-7a-spW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="J96-AW-poc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="KFS-vD-y7c"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="就寢時間" image="bed.double.fill" catalog="system" id="7ik-Dj-F4v"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BIk-ZZ-VGz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1159" y="865"/>
+        </scene>
     </scenes>
     <resources>
         <image name="alarm" catalog="system" width="124" height="128"/>
         <image name="alarm.fill" catalog="system" width="124" height="128"/>
+        <image name="bed.double.fill" catalog="system" width="128" height="80"/>
+        <image name="globe" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="stopwatch.fill" catalog="system" width="121" height="128"/>
+        <image name="timer" catalog="system" width="128" height="121"/>
     </resources>
 </document>

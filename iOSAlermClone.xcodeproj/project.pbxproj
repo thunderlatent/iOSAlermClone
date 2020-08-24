@@ -19,6 +19,9 @@
 		53C8FBED24E13F9C00A787AD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8FBEC24E13F9C00A787AD /* DetailViewController.swift */; };
 		53D37F2F24E3D0CE00995608 /* InDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D37F2E24E3D0CE00995608 /* InDetailTableViewController.swift */; };
 		53D37F3124E50F2600995608 /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D37F3024E50F2600995608 /* RepeatTableViewController.swift */; };
+		53E2C90324F373C80072BDF4 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2C90224F373C80072BDF4 /* Protocol.swift */; };
+		53E2C90624F374010072BDF4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2C90524F374010072BDF4 /* Extension.swift */; };
+		53E2C90824F3742A0072BDF4 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2C90724F3742A0072BDF4 /* Enum.swift */; };
 		53F2E8EB24E67C7600D80D94 /* SecondNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F2E8EA24E67C7500D80D94 /* SecondNVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +40,9 @@
 		53C8FBEC24E13F9C00A787AD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		53D37F2E24E3D0CE00995608 /* InDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InDetailTableViewController.swift; sourceTree = "<group>"; };
 		53D37F3024E50F2600995608 /* RepeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTableViewController.swift; sourceTree = "<group>"; };
+		53E2C90224F373C80072BDF4 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		53E2C90524F374010072BDF4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		53E2C90724F3742A0072BDF4 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		53F2E8EA24E67C7500D80D94 /* SecondNVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondNVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,22 +76,65 @@
 		53C8FBD224E0E5C700A787AD /* iOSAlermClone */ = {
 			isa = PBXGroup;
 			children = (
-				53C8FBD324E0E5C800A787AD /* AppDelegate.swift */,
-				53C8FBD524E0E5C800A787AD /* SceneDelegate.swift */,
-				53C8FBD724E0E5C800A787AD /* AlarmViewController.swift */,
-				53C8FBEA24E1107300A787AD /* AlarmTableViewCell.swift */,
-				53C8FBEC24E13F9C00A787AD /* DetailViewController.swift */,
-				53D37F2E24E3D0CE00995608 /* InDetailTableViewController.swift */,
-				53D37F3024E50F2600995608 /* RepeatTableViewController.swift */,
-				5358944024EA493900044AE1 /* LabelViewController.swift */,
+				53E2C90124F373A60072BDF4 /* Helper */,
+				53E2C8FD24F3733D0072BDF4 /* Delegate */,
+				53E2C8FF24F3736B0072BDF4 /* Controller */,
+				53E2C90024F3737E0072BDF4 /* View */,
 				53C8FBD924E0E5C800A787AD /* Main.storyboard */,
 				53C8FBDC24E0E5D000A787AD /* Assets.xcassets */,
 				53C8FBDE24E0E5D000A787AD /* LaunchScreen.storyboard */,
 				53C8FBE124E0E5D000A787AD /* Info.plist */,
-				5346F31524E27F11003D1D40 /* AlarmModel.swift */,
-				53F2E8EA24E67C7500D80D94 /* SecondNVC.swift */,
+				53E2C8FE24F373500072BDF4 /* Model */,
 			);
 			path = iOSAlermClone;
+			sourceTree = "<group>";
+		};
+		53E2C8FD24F3733D0072BDF4 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				53C8FBD324E0E5C800A787AD /* AppDelegate.swift */,
+				53C8FBD524E0E5C800A787AD /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		53E2C8FE24F373500072BDF4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5346F31524E27F11003D1D40 /* AlarmModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		53E2C8FF24F3736B0072BDF4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				53C8FBD724E0E5C800A787AD /* AlarmViewController.swift */,
+				53C8FBEC24E13F9C00A787AD /* DetailViewController.swift */,
+				53D37F2E24E3D0CE00995608 /* InDetailTableViewController.swift */,
+				53D37F3024E50F2600995608 /* RepeatTableViewController.swift */,
+				5358944024EA493900044AE1 /* LabelViewController.swift */,
+				53F2E8EA24E67C7500D80D94 /* SecondNVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		53E2C90024F3737E0072BDF4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				53C8FBEA24E1107300A787AD /* AlarmTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		53E2C90124F373A60072BDF4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				53E2C90524F374010072BDF4 /* Extension.swift */,
+				53E2C90224F373C80072BDF4 /* Protocol.swift */,
+				53E2C90724F3742A0072BDF4 /* Enum.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,9 +211,12 @@
 				53C8FBD824E0E5C800A787AD /* AlarmViewController.swift in Sources */,
 				5358944124EA493900044AE1 /* LabelViewController.swift in Sources */,
 				53C8FBD424E0E5C800A787AD /* AppDelegate.swift in Sources */,
+				53E2C90624F374010072BDF4 /* Extension.swift in Sources */,
 				53D37F3124E50F2600995608 /* RepeatTableViewController.swift in Sources */,
 				53C8FBED24E13F9C00A787AD /* DetailViewController.swift in Sources */,
 				53C8FBD624E0E5C800A787AD /* SceneDelegate.swift in Sources */,
+				53E2C90824F3742A0072BDF4 /* Enum.swift in Sources */,
+				53E2C90324F373C80072BDF4 /* Protocol.swift in Sources */,
 				53F2E8EB24E67C7600D80D94 /* SecondNVC.swift in Sources */,
 				53C8FBEB24E1107300A787AD /* AlarmTableViewCell.swift in Sources */,
 				5346F31624E27F11003D1D40 /* AlarmModel.swift in Sources */,
