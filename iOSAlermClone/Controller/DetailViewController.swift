@@ -9,12 +9,11 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    @IBOutlet weak var barTitle: UILabel!
-    weak var delegate: PassingAlarmModelDelegate?
-    @IBOutlet weak var detailContainerView: UIView!
-    @IBOutlet weak var timePicker: UIDatePicker!
+    //MARK:- Properties
+    weak var passingAlarmModelDelegate: PassingAlarmModelDelegate?
     var alarmModel: AlarmModel!
-    var oldAlarmModel: AlarmModel = AlarmModel()
+
+    var oldAlarmModel = AlarmModel()
     var inDetailTableViewController: InDetailTableViewController!
     var switchState = false
     lazy var selectTime:String =
@@ -23,7 +22,7 @@ class DetailViewController: UIViewController {
             formatter.dateFormat = "HH:mm"
             self.selectTime = formatter.string(from: self.timePicker.date)
             return self.selectTime
-    }()
+        }()
     var nowTime: String
     {
         let now = Date()
@@ -36,6 +35,11 @@ class DetailViewController: UIViewController {
         return nowTime
     }
     
+    //MARK:- UI Element
+    @IBOutlet weak var detailContainerView: UIView!
+    @IBOutlet weak var timePicker: UIDatePicker!
+    
+    //MARK:- Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTimePicker()
@@ -47,21 +51,23 @@ class DetailViewController: UIViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        print("現在進來的資料alarmModel:")
-        print(alarmModel ?? "alarmModel = NIL")
+        
         if let alarmModel = self.alarmModel
         {
             self.oldAlarmModel = alarmModel
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
-                isSwitchState()
+        isSwitchState()
         if let alarmModel = alarmModel
         {
-            delegate?.passingAlarmModel(alarmModel: alarmModel)
+            passingAlarmModelDelegate?.passingAlarmModel(alarmModel: alarmModel)
         }
-
+        
     }
+    //MARK:- override Function
+    //MARK:- Custom Function
+    
     func isSwitchState()
     {
         if let alarmModel = self.alarmModel
@@ -70,27 +76,29 @@ class DetailViewController: UIViewController {
             {
                 switchState = oldAlarmModel.isOnState
                 self.alarmModel.isOnState = switchState
-                print("Line66 oldAlarmModel.isOnState:\(switchState)")
+                
             }else
             {
                 switchState = true
                 self.alarmModel.isOnState = switchState
-                print("Line68 SwitchState = true")
             }
         }
     }
-  
+    
     func setBarItemTitle()
     {
         navigationItem.title = (alarmModel == nil) ? "加入鬧鐘" : "編輯鬧鐘"
     }
-    func setupTimePicker()
+    private func setupTimePicker()
     {
+        //MARK: - 我要做24小時制，所以把時區轉換到英國
         self.timePicker.locale = Locale(identifier: "en_GB")
+        
+        //MARK: - 設置字體顏色
         self.timePicker.setValue(UIColor.white, forKeyPath: "textColor")
     }
     
-    func getNowTimeToString() -> String
+    private func getNowTimeToString() -> String
     {
         let now = Date()
         let dateformatter = DateFormatter()
@@ -133,7 +141,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func saveBtn(_ sender: UIButton) {
-            self.tapToSaving()
+        self.tapToSaving()
         dismiss(animated: true, completion: nil)
     }
     @objc func timePickerAction(_ sender: UIDatePicker){
@@ -144,7 +152,7 @@ class DetailViewController: UIViewController {
         print("sender.date:\(selectTime)")
     }
     
-    func tapToSaving()
+    private func tapToSaving()
     {
         
         alarmModel = AlarmModel(times: selectTime,
@@ -154,7 +162,7 @@ class DetailViewController: UIViewController {
                                 laterMinder: inDetailTableViewController.laterMinderSwitch.isOn,
                                 ring: inDetailTableViewController.ringLabel.text,
                                 selectDays: inDetailTableViewController.select)
-       
+        
     }
     func setDataToInDetailTableViewcontroller()
     {
