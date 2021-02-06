@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5346F31624E27F11003D1D40 /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5346F31524E27F11003D1D40 /* AlarmModel.swift */; };
 		5358944124EA493900044AE1 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358944024EA493900044AE1 /* LabelViewController.swift */; };
+		53AE17AB25B9D8EC0060DF03 /* UIColor+DoNotInput255.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AE17AA25B9D8EC0060DF03 /* UIColor+DoNotInput255.swift */; };
 		53C8FBD424E0E5C800A787AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8FBD324E0E5C800A787AD /* AppDelegate.swift */; };
 		53C8FBD624E0E5C800A787AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8FBD524E0E5C800A787AD /* SceneDelegate.swift */; };
 		53C8FBD824E0E5C800A787AD /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8FBD724E0E5C800A787AD /* AlarmViewController.swift */; };
@@ -19,15 +20,15 @@
 		53C8FBED24E13F9C00A787AD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8FBEC24E13F9C00A787AD /* DetailViewController.swift */; };
 		53D37F2F24E3D0CE00995608 /* InDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D37F2E24E3D0CE00995608 /* InDetailTableViewController.swift */; };
 		53D37F3124E50F2600995608 /* RepeatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D37F3024E50F2600995608 /* RepeatTableViewController.swift */; };
-		53E2C90324F373C80072BDF4 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2C90224F373C80072BDF4 /* Protocol.swift */; };
-		53E2C90624F374010072BDF4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2C90524F374010072BDF4 /* Extension.swift */; };
-		53E2C90824F3742A0072BDF4 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2C90724F3742A0072BDF4 /* Enum.swift */; };
+		53E2C90324F373C80072BDF4 /* PassingAlarmModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2C90224F373C80072BDF4 /* PassingAlarmModelDelegate.swift */; };
+		53E2C90824F3742A0072BDF4 /* DaysEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2C90724F3742A0072BDF4 /* DaysEnum.swift */; };
 		53F2E8EB24E67C7600D80D94 /* SecondNVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F2E8EA24E67C7500D80D94 /* SecondNVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5346F31524E27F11003D1D40 /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		5358944024EA493900044AE1 /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
+		53AE17AA25B9D8EC0060DF03 /* UIColor+DoNotInput255.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+DoNotInput255.swift"; sourceTree = "<group>"; };
 		53C8FBD024E0E5C700A787AD /* iOSAlermClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSAlermClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53C8FBD324E0E5C800A787AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53C8FBD524E0E5C800A787AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,9 +41,8 @@
 		53C8FBEC24E13F9C00A787AD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		53D37F2E24E3D0CE00995608 /* InDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InDetailTableViewController.swift; sourceTree = "<group>"; };
 		53D37F3024E50F2600995608 /* RepeatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatTableViewController.swift; sourceTree = "<group>"; };
-		53E2C90224F373C80072BDF4 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
-		53E2C90524F374010072BDF4 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		53E2C90724F3742A0072BDF4 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		53E2C90224F373C80072BDF4 /* PassingAlarmModelDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassingAlarmModelDelegate.swift; sourceTree = "<group>"; };
+		53E2C90724F3742A0072BDF4 /* DaysEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaysEnum.swift; sourceTree = "<group>"; };
 		53F2E8EA24E67C7500D80D94 /* SecondNVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondNVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,9 +130,9 @@
 		53E2C90124F373A60072BDF4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				53E2C90524F374010072BDF4 /* Extension.swift */,
-				53E2C90224F373C80072BDF4 /* Protocol.swift */,
-				53E2C90724F3742A0072BDF4 /* Enum.swift */,
+				53E2C90224F373C80072BDF4 /* PassingAlarmModelDelegate.swift */,
+				53E2C90724F3742A0072BDF4 /* DaysEnum.swift */,
+				53AE17AA25B9D8EC0060DF03 /* UIColor+DoNotInput255.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -211,13 +211,13 @@
 				53C8FBD824E0E5C800A787AD /* AlarmViewController.swift in Sources */,
 				5358944124EA493900044AE1 /* LabelViewController.swift in Sources */,
 				53C8FBD424E0E5C800A787AD /* AppDelegate.swift in Sources */,
-				53E2C90624F374010072BDF4 /* Extension.swift in Sources */,
 				53D37F3124E50F2600995608 /* RepeatTableViewController.swift in Sources */,
 				53C8FBED24E13F9C00A787AD /* DetailViewController.swift in Sources */,
 				53C8FBD624E0E5C800A787AD /* SceneDelegate.swift in Sources */,
-				53E2C90824F3742A0072BDF4 /* Enum.swift in Sources */,
-				53E2C90324F373C80072BDF4 /* Protocol.swift in Sources */,
+				53E2C90824F3742A0072BDF4 /* DaysEnum.swift in Sources */,
+				53E2C90324F373C80072BDF4 /* PassingAlarmModelDelegate.swift in Sources */,
 				53F2E8EB24E67C7600D80D94 /* SecondNVC.swift in Sources */,
+				53AE17AB25B9D8EC0060DF03 /* UIColor+DoNotInput255.swift in Sources */,
 				53C8FBEB24E1107300A787AD /* AlarmTableViewCell.swift in Sources */,
 				5346F31624E27F11003D1D40 /* AlarmModel.swift in Sources */,
 				53D37F2F24E3D0CE00995608 /* InDetailTableViewController.swift in Sources */,

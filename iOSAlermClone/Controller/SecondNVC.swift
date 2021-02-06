@@ -12,7 +12,7 @@ class SecondNVC: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//MARK: - 
         // Do any additional setup after loading the view.
     }
     

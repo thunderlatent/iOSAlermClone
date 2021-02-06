@@ -10,6 +10,12 @@ import UIKit
 
 class AlarmTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
+//    lazy var testLabel:UILabel =
+//    {
+//        let label = UILabel(frame: CGRect(x: 10, y: 10, width: self.frame.width  * 0.5, height: 10))
+//        label.backgroundColor = .white
+//        return label
+//    }()
     let selectBackGroundView: UIView = {
         let selectView = UIView()
         selectView.backgroundColor = UIColor(red: 25, green: 25, blue: 25)
@@ -40,6 +46,7 @@ class AlarmTableViewCell: UITableViewCell {
    
     func setUp(listAlarmModel:AlarmModel)
     {
+        
         self.timeLabel.text = listAlarmModel.times
         self.descriptionLabel.text = "\(listAlarmModel.description),\(listAlarmModel.repeatState ?? "")"
         self.stateSwitch.isOn = listAlarmModel.isOnState

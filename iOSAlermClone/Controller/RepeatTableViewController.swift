@@ -74,6 +74,8 @@ class RepeatTableViewController: UITableViewController {
         }
         
         cell?.accessoryType = (select.contains(Days(rawValue: indexPath.row)!)) ? .checkmark : .none
+        
+        
         showText()
     }
     

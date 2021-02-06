@@ -89,6 +89,7 @@ class InDetailTableViewController: UITableViewController {
         let selectBackGroundView: UIView = {
             let selectView = UIView()
             selectView.backgroundColor = UIColor(red: 60, green: 60, blue: 60)
+            
             return selectView
         }()
         cell.selectedBackgroundView = selectBackGroundView

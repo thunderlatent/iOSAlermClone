@@ -10,7 +10,7 @@ import UIKit
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var barTitle: UILabel!
-    weak var delegate: PassingValueDelegate?
+    weak var delegate: PassingAlarmModelDelegate?
     @IBOutlet weak var detailContainerView: UIView!
     @IBOutlet weak var timePicker: UIDatePicker!
     var alarmModel: AlarmModel!
@@ -58,9 +58,9 @@ class DetailViewController: UIViewController {
                 isSwitchState()
         if let alarmModel = alarmModel
         {
-            delegate?.passingValue(alarmData: alarmModel)
+            delegate?.passingAlarmModel(alarmModel: alarmModel)
         }
-               delegate?.reloadTableView()
+
     }
     func isSwitchState()
     {

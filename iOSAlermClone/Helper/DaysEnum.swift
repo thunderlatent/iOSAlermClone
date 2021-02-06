@@ -1,12 +1,7 @@
-//
-//  Enum.swift
-//  iOSAlermClone
-//
-//  Created by Jimmy on 2020/8/24.
-//  Copyright © 2020 yuming. All rights reserved.
-//
 
 import UIKit
+//MARK: - 用來表示星期幾的Enum，這樣寫可以表示Int以及String
+//MARK: - 用法：Days.sunday.rawValue // 0,  Days.sunday.dayString // 日
 enum Days: Int, CaseIterable,Codable
 {
     case sunday = 0,monday,tuesday,wednesday,thursday,friday,saturday
